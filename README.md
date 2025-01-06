@@ -6,7 +6,7 @@ Eavify is a Rails concern that simplifies the implementation of an EAV (Entity-A
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'eavify', path: 'path/to/eavify'
+gem 'eavify'
 ```
 
 And then execute:
@@ -24,9 +24,8 @@ class Product < ApplicationRecord
   include Eavify
 
   define_eav(
-    category: :electronics,
-    fields: %w[brand color model price storage warranty],
-    data_types: {
+    scope: :electronics,
+    fields: {
       "brand" => :text,
       "color" => :text,
       "model" => :text,
