@@ -20,24 +20,29 @@ $ bundle install
 Include Eavify in your model:
 
 ```ruby
-class Product < ApplicationRecord
-  include Eavify
+class product < applicationrecord
+  include eavify
 
-  define_eav(
-    scope: :electronics,
-    fields: {
-      "brand" => :text,
-      "color" => :text,
-      "model" => :text,
-      "price" => :decimal,
-      "storage" => :text,
-      "warranty" => :text
-    },
-    validations: {
-      presence: ["brand", "model", "price", "storage"],
-      numericality: ["price"]
+  cfg = [
+
+    {
+      scope: :electronics,
+      fields: {
+        'brand' => :text,
+        'color' => :text,
+        'model' => :text,
+        'price' => :decimal,
+        'storage' => :text,
+        'warranty' => :text
+      },
+      validations: {
+        presence: %w[brand model price storage],
+        numericality: ['price']
+      }
+
     }
-  )
+  ]
+  define_eav cfg
 end
 ```
 

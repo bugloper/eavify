@@ -1,4 +1,4 @@
-require_relative "eavify/version"
+require_relative 'eavify/version'
 
 module Eavify
   extend ActiveSupport::Concern
@@ -15,17 +15,17 @@ module Eavify
         fields = cfg[:fields]
         validations = cfg[:validations] || {}
 
-        self.scope_fields[scope] = {
+        scope_fields[scope] = {
           fields: fields,
           validations: validations
         }
 
-        scope scope, -> {
+        scope scope, lambda {
           select(
-            "id",
-            "scope",
-            "created_at",
-            "updated_at",
+            'id',
+            'scope',
+            'created_at',
+            'updated_at',
             *fields.map do |field, data_type|
               case data_type
               when :text, :varchar
@@ -56,11 +56,11 @@ module Eavify
         fields.each do |field, _data_type|
           field_name = field.to_s
           define_method(field_name) do
-            self.cols[field_name]
+            cols[field_name]
           end
 
           define_method("#{field_name}=") do |value|
-            self.cols[field_name] = value
+            cols[field_name] = value
           end
         end
       end
