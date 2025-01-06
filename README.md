@@ -20,11 +20,10 @@ $ bundle install
 Include Eavify in your model:
 
 ```ruby
-class product < applicationrecord
+class Product < ApplicationRecord
   include eavify
 
   cfg = [
-
     {
       scope: :electronics,
       fields: {
