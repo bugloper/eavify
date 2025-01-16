@@ -2,9 +2,8 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in eavify.gemspec
 gemspec
 
-gem "rake", "~> 13.0"
-
 gem "minitest", "~> 5.16"
+gem "rake", "~> 13.0"
+gem "ruby-lsp"
